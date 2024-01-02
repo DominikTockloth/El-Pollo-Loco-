@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Pollo Loco</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="img/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/icons/favicon-16x16.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Eater&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Eater&display=swap" rel="stylesheet">
+
+
+    <script src="js/sound.js"></script>
+    <script src="models/drawableObject.class.js"></script>
+    <script src="models/moveable-Object.class.js"></script>
+    <script src="models/throwable-object.class.js"></script>
+    <script src="models/keyboard.class.js"></script>
+    <script src="models/status-bar.class.js"></script>
+    <script src="models/healthbar.class.js"></script>
+    <script src="models/endboss-healthbar.js"></script>
+    <script src="models/coinbar.class.js"></script>
+    <script src="models/bottlebar.class.js"></script>
+    <script src="models/background-objects.js"></script>
+    <script src="models/cloud.class.js"></script>
+    <script src="models/chicken.class.js"></script>
+    <script src="models/character.class.js"></script>
+    <script src="models/coin.class.js"></script>
+    <script src="models/bottle.class.js"></script>
+    <script src="models/endboss.class.js"></script>
+    <script src="models/world.class.js"></script>
+    <script src="levels/level1.js"></script>
+    <script src="models/level.class.js"></script>
+    <script src="js/game.js"></script>
+
+
+</head>
+
+<body id="body" onload="playStartMusic()">
+
+    <div class="main-container" id="main-container">
+        <div class="rotate d-none" id="rotate">
+            <div class="rotate-content" id="rotate-content">Please<img src="img/icons/rotate-icon.png">rotate your
+                device!!
+            </div>
+        </div>
+        <h1 id="headline">El Pollo Loco</h1>
+
+        <div id="canvas-container">
+
+
+            <div id="game-over" style="display: none;"><img src="img/backgrounds/game over.png" class="restart"
+                    id="game-over-img">
+                <button class="buttons" style="display: none;" id="restart-btn" onclick="restartGame()">Restart</button>
+            </div>
+            <div class="btn-container" id="btn-container">
+                <button class="buttons" id="start-btn" onclick="startGame()"> <img src="img/icons/play.png"
+                        class=""></button>
+
+                <button class="buttons" onclick="showControls()" id="control-btn"><img
+                        src="img/icons/controls.png"></button>
+                <button class="buttons" onclick="showInformation()" id="info-btn"><img
+                        src="img/icons/info.png"></button>
+                <button class="buttons" style="display: none;" onclick="unmuteAllSounds()" id="sound-on"><img
+                        src="img/icons/sound-on.png"></button>
+                <button class="buttons" style="display: flex;" id="sound-mute" onclick="muteAllSounds()"><img
+                        src="img/icons/sound-mute.png"></button>
+                <button class="buttons" style="display: flex;" onclick=" fullScreen()" id="fullscreen-icon"><img
+                        src="img/icons/fullscreen.png"></button>
+                <button class="buttons" style="display: none;" onclick=" minimizeFullscreen()" id="exitfull-icon"><img
+                        src="img/icons/minimizeScreen.png"></button>
+            </div>
+
+
+            <div id="winner" style="display: none;"><span>Winner !!</span> <br> <span>You defeated the Endboss
+                    !!!</span>
+                <button class="buttons" style="display: none;" id="restart-btn-win"
+                    onclick="restartGame()">Restart</button>
+            </div>
+
+            <div class="control-info" id="information-text" style="display: none;">
+                <div id="x-mark"><img src="img/controls/x-mark-4-64.png" onclick="hideInformationOverlay()"></div>
+                <h2>Pepe Peligroso</h2>
+                <p>Pepe is a kind and hard working man , who is working at a chicken farm near his home-village.
+                    Someday
+                    an evil gringo
+                    came by , and poisened the water of the chicken farm. All chicken went nuts and the rooster got
+                    an
+                    enormous size. Pepe knew he had to fight the
+                    rooster , and if he would win , everything would be fine again. </p>
+            </div>
+
+            <div id="control-info" class="control-info" style="display:none;">
+                <div id="x-mark"><img src="img/controls/x-mark-4-64.png" onclick="hideControlOverlay()"></div>
+                <div id="subhead" class="sub-headline">
+                    <h2 id="headline2">Controls</h2>
+                </div>
+                <div id="control1"><span>move left :</span><span><img src="img/controls/left.png"></span></div>
+                <div id="control2"><span>move right :</span><span><img src="img/controls/right.png"></span></div>
+                <div id="control3"><span>jump :</span><span><img src="img/controls/space.png"></span></div>
+                <div id="control4"><span>throw :</span><span><img src="img/controls/d.png"></span></div>
+            </div>
+
+            <div id="start-screen"><img src="img/backgrounds/startscreen_1.png" id="start-img">
+            </div>
+            <canvas id="canvas" width="720" height="480">
+
+            </canvas>
+
+            <div class="mobile-btn-container">
+
+                <div class="width"> <img src="img/controls/left.png" class="buttons" id="left" onclick="moveLeft()">
+                    <img src="img/controls/right.png" class="buttons" id="right" onclick="moveRight()">
+                </div>
+                <div class="width"><img src="img/controls/arrow-up.png" class="buttons" id="jump" onclick="jump()">
+                    <img src="img/controls/throw-button.png" class="buttons" id="throw" onclick="throwBottle()">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
