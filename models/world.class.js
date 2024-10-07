@@ -235,7 +235,7 @@ class World {
     }
 
     /**
-     * Checks collision between throwable objects and end bosses, managing interactions.
+     * Checks collision between throwable objects and end boss, managing interactions.
      */
     checkCollisionOfBottleWithEndboss() {
         this.throwableObjects.forEach((bottle) => {

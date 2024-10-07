@@ -1,7 +1,6 @@
 /**
  * Represents a character object that extends the functionality of a moveable object.
  * This class provides properties and methods to control character movement, animations, and actions.
- *
  * @extends moveableObject
  */
 
@@ -41,7 +40,6 @@ class Character extends moveableObject {
     'img/Pepe/2_walk/W-24.png',
     'img/Pepe/2_walk/W-25.png',
     'img/Pepe/2_walk/W-26.png',
-
   ];
 
   Jumping_Images = [
@@ -108,17 +106,16 @@ class Character extends moveableObject {
     this.loadImages(this.Hurt_Images);
     this.animate();
     this.applyGravity();
-
   }
 
   animate() {
     this.moveInterval = setInterval(() => {
       this.playMovement();
-    }, 1000 / 20);
+    }, 2200 / 20);
 
     setInterval(() => {
       this.playImages();
-    }, 50);
+    }, 70);
   }
 
   /**

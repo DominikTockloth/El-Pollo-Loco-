@@ -77,11 +77,13 @@ function initLevel() {
             new Bottle(),
             new Bottle(),
             new Bottle(),
-            new Bottle(),
-            new Bottle(),
         ],
 
         [
+            new Chicken(),
+            new Chicken(),
+            new Chicken(),
+            new Chicken(),
             new Chicken(),
             new Chicken(),
             new Chicken(),

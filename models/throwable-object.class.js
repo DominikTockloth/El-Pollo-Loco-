@@ -79,7 +79,7 @@ class ThrowableObject extends moveableObject {
                     clearInterval(this.bottleInterval);
                 }, 100);
             }
-        }, 1000 / 20);
+        }, 1500 / 20);
     }
 
     /**
